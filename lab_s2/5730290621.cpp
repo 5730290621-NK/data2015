@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+//#include <queue>
 #include <assert.h>
 
 using namespace std;
@@ -13,11 +13,46 @@ protected:
 
 public:
 
+    //--------CONSTRUCTOR----------//
+    queue(){
+    }
+    
+    //------ACCESS&MODIFIER--------//
+    bool empty(){
+        return mVect.size()==0;
+    }
+
+    void push(T ele){    //ส่วนPushที่มีปัญหาในห้องที่อาจารย์มาดูพอดี ได้ลบ&ออก แล้วcompileผ่าน
+        mVect.push_back(ele);
+    }
+
+    void pop(){
+        for(int i = 0 ; i < mVect.size() -1 ; i++)
+            mVect[i] = mVect[i+1];
+
+        mVect.pop_back();
+
+    }
+
+    size_t size(){
+        return mVect.size();
+    }
+
+
+    T front() {
+        return mVect[0];
+    }
+
+    T back() {
+        return mVect[mVect.size() -1];
+
+    }
+
 };
 }
 
 void test1(){
-  queue<int> q;
+  CP::queue<int> q;
   assert(q.empty() == true);
   q.push(1);
   q.push(2);
@@ -34,7 +69,7 @@ void test1(){
   assert(q.back() == 27);
   assert(q.size() == 3);
 
-  queue<int> q1;
+  CP::queue<int> q1;
   q1 = q;
   assert(q1.size() == 3);
   assert(q1.front() == 2);
@@ -43,7 +78,7 @@ void test1(){
 
 void test2(){
 
-  queue<vector<int>> q;
+  CP::queue<vector<int>> q;
   vector<int> v1;
   vector<int> v2;
   for(int i = 1 ; i <= 10 ; i++){
@@ -57,8 +92,10 @@ void test2(){
 }
 
 void test3(){
-  queue<string> q;
-  size_t n = 1e6;
+  CP::queue<string> q;
+  size_t n = 1e3;  /*
+  -------------change to 1000-------------
+        */
   for(size_t i = 0 ; i < n ; i++){
     string a = "a";
     q.push(a);
