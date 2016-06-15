@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-//#include <queue>
 #include <assert.h>
 
 using namespace std;
@@ -11,18 +10,19 @@ class queue {
 protected:
   vector<T> mVect;
 
+
 public:
 
     //--------CONSTRUCTOR----------//
     queue(){
     }
-    
+
     //------ACCESS&MODIFIER--------//
     bool empty(){
         return mVect.size()==0;
     }
 
-    void push(T ele){    //ส่วนPushที่มีปัญหาในห้องที่อาจารย์มาดูพอดี ได้ลบ&ออก แล้วcompileผ่าน
+    void push(T ele){
         mVect.push_back(ele);
     }
 
@@ -47,6 +47,8 @@ public:
         return mVect[mVect.size() -1];
 
     }
+
+
 
 };
 }
